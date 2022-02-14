@@ -1,0 +1,4 @@
+tqdm                 4.62.3
+bert4keras           0.10.8
+infomap              2.0.2
+numpy                1.21.2

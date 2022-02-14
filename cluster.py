@@ -67,5 +67,5 @@ def infomap_cluster(data, keep_outlier=True):
 
 
 if __name__ == '__main__':
-    data = ['早上好', '你好啊', 'hello', '奥运健儿加油', '冬奥会真好看']
+    data = ['早上好', '你好啊', 'hello', '奥运健儿加油', '冬奥会真好看', 'good morning']
     print(infomap_cluster(data, True))

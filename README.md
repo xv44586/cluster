@@ -5,7 +5,7 @@
 主要思路为文本向量化 + 聚类，通过文本向量化，获取两两文本之间相似度，然后根据相似度进行聚类。
 
 ## 文本向量化
-文本向量化使用的是目前中文句向量效果最好的方案：<a herf='https://github.com/ZhuiyiTechnology/roformer-sim'>chinese-roformer-sim</a>
+文本向量化使用的是目前中文句向量效果最好的方案：<a href='https://github.com/ZhuiyiTechnology/roformer-sim'>chinese-roformer-sim</a>
 
 ## 聚类
 聚类使用InfoMap 进行无监督聚类，参考：<a href='https://kexue.fm/archives/7006'>最小熵原理（五）：“层层递进”之社区发现与聚类</a>
@@ -15,6 +15,9 @@
 from cluster import infomap_cluster
 
 
-data = ['早上好', '你好啊', 'hello', '奥运健儿加油', '冬奥会真好看']
+data = ['早上好', '你好啊', 'hello', '奥运健儿加油', '冬奥会真好看', 'good morning']
 print(infomap_cluster(data, True))
+"""
+[['早上好', 2], ['你好啊', 1], ['hello', 1], ['奥运健儿加油', 3], ['冬奥会真好看', 4], ['good morning', 2]]
+"""
 ```

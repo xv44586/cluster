@@ -9,10 +9,7 @@ import infomap
 from vectorizer import convert2vecs
 
 
-min_sim = 0.8  # 最小相似度
-
-
-def build_links(vecs, min_sim=min_sim):
+def build_links(vecs, min_sim):
     vecs /= (vecs**2).sum(axis=1, keepdims=True)**0.5  # normalization
     links = {}
     for i in tqdm(range(vecs.shape[0])):
@@ -38,15 +35,17 @@ def cluster_links(links):
     return cluster2docIds
 
 
-def infomap_cluster(data, keep_outlier=True):
+def infomap_cluster(data, keep_outlier=True, threshold=0.9):
     """
     data: 
         文本列表，e.g: [str1, str2, ...]
     keep_outlier: 
         是否保留孤立点，由于存在某些文本与任意其他文本之间的相似度都小于阈值，所以会存在孤立点，设为True 时，每个孤立点作为单独一类添加在末尾
+    threshold:
+        最小相似度, 低于阈值的"边"将被舍弃
     """
     vecs = convert2vecs(data)
-    links = build_links(vecs)
+    links = build_links(vecs, threshold)
     cluster2docIds = cluster_links(links)
     docIds2cluster = {}
     for cluster_id, docIds in cluster2docIds.items():

@@ -7,6 +7,10 @@
 ## 文本向量化
 文本向量化使用的是目前中文句向量效果最好的方案：<a href='https://github.com/ZhuiyiTechnology/roformer-sim'>chinese-roformer-sim</a>
 
+### 下载地址
+- [chinese_roformer-sim-char-ft_L-12_H-768_A-12.zip](https://open.zhuiyi.ai/releases/nlp/models/zhuiyi/chinese_roformer-sim-char-ft_L-12_H-768_A-12.zip)
+
+
 ## 聚类
 聚类使用InfoMap 进行无监督聚类，参考：<a href='https://kexue.fm/archives/7006'>最小熵原理（五）：“层层递进”之社区发现与聚类</a>
 
@@ -16,8 +20,9 @@ from cluster import infomap_cluster
 
 
 data = ['早上好', '你好啊', 'hello', '奥运健儿加油', '冬奥会真好看', 'good morning']
-print(infomap_cluster(data, True))
+print(infomap_cluster(data, keep_outlier=True, threshold=0.9))
 """
 [['早上好', 2], ['你好啊', 1], ['hello', 1], ['奥运健儿加油', 3], ['冬奥会真好看', 4], ['good morning', 2]]
 """
 ```
+PS. 下载对应的模型文件后修改vectorizer.py  中的配置文件

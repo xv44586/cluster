@@ -15,6 +15,8 @@
 聚类使用InfoMap 进行无监督聚类，参考：<a href='https://kexue.fm/archives/7006'>最小熵原理（五）：“层层递进”之社区发现与聚类</a>
 
 ## 使用方法
+- 下载对应的模型文件后修改`vectorizer.py`  中的配置目录；
+-  函数`informap_cluster` 方法中的`threshold` 是只保留两个边的最小阈值，主要作用是减少图中的边，减少计算量
 ```python
 from cluster import infomap_cluster
 
@@ -25,4 +27,5 @@ print(infomap_cluster(data, keep_outlier=True, threshold=0.9))
 [['早上好', 2], ['你好啊', 1], ['hello', 1], ['奥运健儿加油', 3], ['冬奥会真好看', 4], ['good morning', 2]]
 """
 ```
-PS. 下载对应的模型文件后修改vectorizer.py  中的配置文件
+
+
